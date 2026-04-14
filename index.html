@@ -37,22 +37,32 @@ body {
   top: 0;
   width: 100%;
   display: flex;
-  justify-content: flex-end;
-  padding: var(--sm) var(--md);
+  justify-content: space-between;
+  padding: var(--sm) 40px;
   background: rgba(243,242,236,0.85);
   backdrop-filter: blur(10px);
   z-index: 100;
 }
 
+.nav-left {
+  display: flex;
+  gap: 20px;
+}
+
+.nav-right {
+  display: flex;
+  gap: 10px;
+}
+
+/* LINKS */
 .navbar a {
-  margin-left: 20px;
   text-decoration: none;
   color: var(--text);
   font-size: 11px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  transition: 0.3s;
   cursor: pointer;
+  transition: 0.3s;
 }
 
 .navbar a:hover {
@@ -81,15 +91,15 @@ body {
   display: block;
 }
 
-/* 🌿 PAGE SYSTEM */
+/* 🌿 PAGE */
 .page {
   opacity: 0;
-  transform: translateY(20px);
+  transform: translateY(30px);
   pointer-events: none;
   position: absolute;
   width: 100%;
   padding-top: 120px;
-  transition: all 0.8s ease;
+  transition: all 1s ease;
 }
 
 .page.active {
@@ -117,17 +127,17 @@ body {
   max-width: 750px;
 }
 
-/* 🌿 WHITE SECTION */
+/* 🌿 WHITE */
 .white {
   background: var(--white);
 }
 
-/* 🌿 PARALLAX IMAGE */
+/* 🌿 IMAGE */
 .image-block {
-  height: 60vh;
+  height: 70vh;
   background-size: cover;
   background-position: center;
-  background-attachment: fixed; /* ✨ parallax */
+  will-change: transform;
 }
 
 /* 🌿 TEAM */
@@ -148,16 +158,19 @@ body {
   object-fit: cover;
 }
 
-/* 🌿 REVEAL */
-.fade {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: 1s ease;
+/* 🌿 CONTACT */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-width: 400px;
 }
 
-.fade.visible {
-  opacity: 1;
-  transform: translateY(0);
+.contact-form input,
+.contact-form textarea {
+  padding: 10px;
+  border: 1px solid #ddd;
+  background: white;
 }
 
 /* 🌿 FOOTER */
@@ -168,15 +181,23 @@ body {
   border-top: 1px solid #ddd;
 }
 
+/* 🌿 FADE */
+.fade {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: 1.2s ease;
+}
+
+.fade.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 /* 🌿 MOBILE */
 @media (max-width: 768px) {
 
   .member {
     flex-direction: column;
-  }
-
-  .image-block {
-    background-attachment: scroll; /* fix mobile */
   }
 
 }
@@ -189,58 +210,55 @@ body {
 <!-- 🌿 NAV -->
 <div class="navbar">
 
-  <a onclick="showPage('home')">Home</a>
+  <div class="nav-left">
+    <a onclick="showPage('home')">Home</a>
 
-  <div class="dropdown">
-    <a>About</a>
-    <div class="dropdown-content">
-      <a onclick="showPage('vision')">Vision</a>
-      <a onclick="showPage('team')">Team</a>
-      <a onclick="showPage('methodology')">Methodology</a>
+    <div class="dropdown">
+      <a>About</a>
+      <div class="dropdown-content">
+        <a onclick="showPage('vision')">Vision</a>
+        <a onclick="showPage('team')">Team</a>
+        <a onclick="showPage('methodology')">Methodology</a>
+      </div>
     </div>
+
+    <div class="dropdown">
+      <a>Programs</a>
+      <div class="dropdown-content">
+        <a>Local Programs</a>
+        <a>International Programs</a>
+      </div>
+    </div>
+
+    <a onclick="showPage('contact')">Contact</a>
   </div>
 
-  <a>Local Programs</a>
-  <a>International Programs</a>
-
-  <a href="https://instagram.com/unfold.ev" target="_blank">Instagram</a>
-  <a href="mailto:unfold.erasmus@gmail.com">Email</a>
-
-  <a>ENG</a>
-  <a>DE</a>
+  <div class="nav-right">
+    <a>ENG</a>
+    <a>DE</a>
+  </div>
 
 </div>
 
 <!-- 🌿 HOME -->
 <section id="home" class="page active">
-
   <section class="hero fade">
     <div>
       <h1>UNFOLD</h1>
       <p>Embodied Learning Across Europe</p>
     </div>
   </section>
-
 </section>
 
 <!-- 🌿 VISION -->
 <section id="vision" class="page">
 
   <div class="section fade">
-
-<h2>Our Vision</h2>
-
-<p>UNFOLD e.V. is a youth-led, non-profit organization based in Germany working at the intersection of youth empowerment, mental health, embodiment and peace education.</p>
-
-<p>We create safe, inclusive and experiential learning spaces where young people and youth workers can reconnect — with themselves, with others, and with the wider social and natural world they are part of.</p>
-
-<p>We work with the understanding that many young people today grow up in environments shaped by pressure, acceleration and emotional disconnection.</p>
-
-<p>We believe transformation begins in the body.</p>
-
+    <h2>Our Vision</h2>
+    <p>Transformation begins in the body.</p>
   </div>
 
-  <div class="image-block fade" style="background-image:url('images/hands.jpg')"></div>
+  <div class="image-block" data-speed="0.2" style="background-image:url('images/hands.jpg')"></div>
 
 </section>
 
@@ -248,48 +266,54 @@ body {
 <section id="team" class="page">
 
   <div class="section white fade">
+    <h2>Our Team</h2>
 
-<h2>Our Team</h2>
+    <div class="team">
 
-<p>UNFOLD is carried by a collective of educators and practitioners.</p>
+      <div class="member fade">
+        <img src="images/Profilbild_Marie.jpg">
+        <div>
+          <h3>Marie Wächter</h3>
+          <p>Somatic practitioner.</p>
+        </div>
+      </div>
 
-<div class="team">
+      <div class="member fade">
+        <img src="images/Profilbild_Marenka.jpg">
+        <div>
+          <h3>Marenka Sedlaczcek</h3>
+          <p>Pedagogue and theatre educator.</p>
+        </div>
+      </div>
 
-<div class="member fade">
-<img src="images/Profilbild_Marie.jpg">
-<div>
-<h3>Marie Wächter</h3>
-<p>Somatic practitioner and yoga teacher.</p>
-</div>
-</div>
-
-<div class="member fade">
-<img src="images/Profilbild_Marenka.jpg">
-<div>
-<h3>Marenka Sedlaczcek</h3>
-<p>Pedagogue and theatre educator.</p>
-</div>
-</div>
-
-</div>
+    </div>
 
   </div>
 
-  <div class="image-block fade" style="background-image:url('images/feet_moss.jpg')"></div>
+  <div class="image-block" data-speed="0.3" style="background-image:url('images/feet_moss.jpg')"></div>
 
 </section>
 
 <!-- 🌿 METHODOLOGY -->
 <section id="methodology" class="page">
+  <div class="section fade">
+    <h2>Our Methodology</h2>
+    <p>Embodied, relational, experiential.</p>
+  </div>
+</section>
+
+<!-- 🌿 CONTACT -->
+<section id="contact" class="page">
 
   <div class="section fade">
+    <h2>Contact</h2>
 
-<h2>Our Methodology</h2>
-
-<p>• Embodied learning</p>
-<p>• Movement & mindfulness</p>
-<p>• Emotional awareness</p>
-<p>• Relational safety</p>
+    <form class="contact-form">
+      <input type="text" placeholder="Name">
+      <input type="email" placeholder="Email">
+      <textarea placeholder="Message"></textarea>
+      <button>Send</button>
+    </form>
 
   </div>
 
@@ -313,11 +337,10 @@ function showPage(id) {
   });
 
   document.getElementById(id).classList.add('active');
-
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-/* 🌿 REVEAL */
+/* 🌿 FADE */
 function reveal() {
   document.querySelectorAll('.fade').forEach(el => {
     const top = el.getBoundingClientRect().top;
@@ -327,7 +350,20 @@ function reveal() {
   });
 }
 
-window.addEventListener('scroll', reveal);
+/* 🌿 PARALLAX FLOAT */
+function parallax() {
+  document.querySelectorAll('.image-block').forEach(el => {
+    const speed = el.getAttribute('data-speed');
+    const y = window.scrollY * speed;
+    el.style.transform = `translateY(${y}px)`;
+  });
+}
+
+window.addEventListener('scroll', () => {
+  reveal();
+  parallax();
+});
+
 window.addEventListener('load', reveal);
 
 </script>
