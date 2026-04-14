@@ -11,7 +11,7 @@
 <style>
 
 /* ─────────────────────────────
-   🌿 UNFOLD DESIGN SYSTEM v3
+   🌿 UNFOLD CLEAN FIX VERSION
 ───────────────────────────── */
 
 :root {
@@ -35,7 +35,7 @@ body {
   color: var(--text);
 }
 
-/* 🌿 TYPOGRAPHY */
+/* 🌿 TYPO */
 h1, h2 {
   font-family: 'Playfair Display', serif;
   letter-spacing: -0.02em;
@@ -45,7 +45,7 @@ p {
   font-size: 16px;
   line-height: 1.7;
   font-weight: 300;
-  max-width: 65ch;
+  max-width: 70ch;
 }
 
 /* 🌿 NAVBAR */
@@ -62,57 +62,36 @@ p {
   z-index: 100;
 }
 
-/* LEFT NAV */
-.nav-left {
-  display: flex;
-  gap: var(--sm);
-  align-items: center;
-}
-
-/* RIGHT NAV */
-.nav-right {
-  display: flex;
-  gap: var(--sm);
-  align-items: center;
-}
-
-/* LINKS */
 .navbar a {
   text-decoration: none;
   color: var(--text);
   font-size: 11px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  transition: all 0.3s ease;
   cursor: pointer;
+  transition: 0.3s;
 }
 
-/* 🌿 HOVER UX (IMPORTANT) */
 .navbar a:hover {
   color: var(--soft);
 }
 
-/* 🌿 ABOUT DROPDOWN */
-.dropdown {
-  position: relative;
-}
-
-.dropdown-content {
-  display: none;
+/* 🌿 LAYOUT FIX (IMPORTANT) */
+.page {
+  opacity: 0;
+  transform: translateY(10px);
+  pointer-events: none;
   position: absolute;
-  top: 20px;
-  background: rgba(243,242,236,0.95);
-  min-width: 160px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  width: 100%;
+  padding-top: 120px; /* 👈 FIX: prevents navbar overlap */
+  transition: all 0.5s ease;
 }
 
-.dropdown-content a {
-  display: block;
-  padding: var(--xs) var(--sm);
-}
-
-.dropdown:hover .dropdown-content {
-  display: block;
+.page.active {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+  position: relative;
 }
 
 /* 🌿 HERO */
@@ -146,7 +125,6 @@ p {
   height: 45vh;
   overflow: hidden;
   text-decoration: none;
-  color: var(--text);
 }
 
 .card-bg {
@@ -155,7 +133,7 @@ p {
   height: 100%;
   background-size: cover;
   background-position: center;
-  transition: transform 0.7s ease;
+  transition: transform 0.6s ease;
 }
 
 .card:hover .card-bg {
@@ -167,24 +145,12 @@ p {
   z-index: 2;
   padding: var(--md);
   background: rgba(243,242,236,0.85);
-  max-width: 320px;
 }
 
-/* 🌿 PAGE SYSTEM */
-.page {
-  opacity: 0;
-  transform: translateY(10px);
-  pointer-events: none;
-  position: absolute;
-  width: 100%;
-  transition: all 0.5s ease;
-}
-
-.page.active {
-  opacity: 1;
-  transform: translateY(0);
-  pointer-events: auto;
-  position: relative;
+/* 🌿 TEXT */
+.text-block {
+  padding: var(--lg) var(--md);
+  max-width: 800px;
 }
 
 /* 🌿 TEAM */
@@ -193,6 +159,7 @@ p {
   flex-direction: column;
   gap: var(--lg);
   padding: var(--md);
+  max-width: 900px;
 }
 
 .team-member {
@@ -229,11 +196,6 @@ p {
   .hero h1 {
     font-size: 2.8em;
   }
-
-  .navbar {
-    flex-direction: column;
-    gap: var(--xs);
-  }
 }
 
 </style>
@@ -243,31 +205,13 @@ p {
 
 <!-- 🌿 NAV -->
 <div class="navbar">
-
-  <div class="nav-left">
+  <div>
     <a onclick="showPage('home')">UNFOLD</a>
     <a onclick="showPage('home')">Home</a>
-
-    <!-- ABOUT -->
-    <div class="dropdown">
-      <a>About</a>
-      <div class="dropdown-content">
-        <a onclick="showPage('vision')">Vision</a>
-        <a onclick="showPage('team')">Team</a>
-        <a onclick="showPage('methodology')">Methodology</a>
-      </div>
-    </div>
-
-    <a>Local Programs</a>
-    <a>International Programs</a>
-    <a>Contact</a>
+    <a onclick="showPage('vision')">Vision</a>
+    <a onclick="showPage('team')">Team</a>
+    <a onclick="showPage('methodology')">Methodology</a>
   </div>
-
-  <div class="nav-right">
-    <a>ENG</a>
-    <a>DE</a>
-  </div>
-
 </div>
 
 <!-- 🌿 HOME -->
@@ -284,42 +228,6 @@ p {
     Regulation before performance.
   </div>
 
-  <section class="grid">
-
-    <a class="card" onclick="showPage('vision')">
-      <div class="card-bg" style="background-image:url('images/about.jpg')"></div>
-      <div class="card-text">
-        <h2>About</h2>
-        <p>Who we are</p>
-      </div>
-    </a>
-
-    <a class="card">
-      <div class="card-bg" style="background-image:url('images/local.jpg')"></div>
-      <div class="card-text">
-        <h2>Local Programs</h2>
-        <p>Schools & communities</p>
-      </div>
-    </a>
-
-    <a class="card">
-      <div class="card-bg" style="background-image:url('images/international.jpg')"></div>
-      <div class="card-text">
-        <h2>International Programs</h2>
-        <p>Across Europe</p>
-      </div>
-    </a>
-
-    <a class="card">
-      <div class="card-bg" style="background-image:url('images/contact.jpg')"></div>
-      <div class="card-text">
-        <h2>Contact</h2>
-        <p>Work with us</p>
-      </div>
-    </a>
-
-  </section>
-
 </section>
 
 <!-- 🌿 VISION -->
@@ -327,8 +235,17 @@ p {
 
   <div class="text-block">
     <h2>Our Vision</h2>
-    <p>UNFOLD works at the intersection of youth empowerment, mental health and embodied learning.</p>
-    <p>We create spaces for reconnection and presence.</p>
+
+    <p>UNFOLD e.V. is a youth-led, non-profit organization based in Germany working at the intersection of youth empowerment, mental health, embodiment and peace education.</p>
+
+    <p>We create safe, inclusive and experiential learning spaces where young people and youth workers can reconnect — with themselves, with others, and with the wider social and natural world they are part of.</p>
+
+    <p>We work with the understanding that many young people today grow up in environments shaped by pressure, acceleration and emotional disconnection. In response, we see resilience not as the ability to perform under stress, but as the capacity to stay connected to oneself and others.</p>
+
+    <p>Our vision is to contribute to a more peaceful and compassionate Europe by integrating personal development with civic engagement, intercultural dialogue and social responsibility.</p>
+
+    <p>We believe that transformation begins in the body - in presence, awareness and the ability to feel.</p>
+
   </div>
 
 </section>
@@ -338,7 +255,13 @@ p {
 
   <div class="text-block">
     <h2>Our Team</h2>
-    <p>A collective of educators, facilitators and practitioners across Europe.</p>
+
+    <p>UNFOLD is carried by a small collective of educators, facilitators and practitioners with long-term experience in youth work, non-formal education and embodied learning.</p>
+
+    <p>What connects us is the shared orientation: to create spaces where people can slow down, listen inwardly, and relate in more human ways.</p>
+
+    <h3>Core Team</h3>
+
   </div>
 
   <div class="team-core">
@@ -347,7 +270,7 @@ p {
       <img src="images/Profilbild_Marie.jpg">
       <div>
         <h3>Marie Wächter</h3>
-        <p>Yoga teacher & somatic practitioner.</p>
+        <p>Yoga teacher and body-oriented practitioner focusing on mental health and somatic awareness.</p>
       </div>
     </div>
 
@@ -355,10 +278,15 @@ p {
       <img src="images/Profilbild_Marenka.jpg">
       <div>
         <h3>Marenka Sedlaczcek</h3>
-        <p>Pedagogue & theatre educator.</p>
+        <p>Pedagogue and theatre educator with focus on embodiment and relational learning.</p>
       </div>
     </div>
 
+  </div>
+
+  <div class="text-block">
+    <h3>Extended Team</h3>
+    <p>A growing international network of educators and youth workers across Europe.</p>
   </div>
 
 </section>
@@ -368,8 +296,15 @@ p {
 
   <div class="text-block">
     <h2>Our Methodology</h2>
-    <p>Embodied, relational and experiential learning.</p>
-    <p>We integrate movement, mindfulness and dialogue.</p>
+
+    <p>• Our methodology is rooted in the understanding that learning is not only cognitive, but deeply embodied, relational and experiential.</p>
+    <p>• We work through non-formal education methods that integrate movement, mindfulness, creative expression, dialogue and nature-based practices.</p>
+    <p>• In practice, this can include somatic awareness exercises, breath and movement work, guided reflection, theatre-based exploration, group dialogue and time in nature.</p>
+    <p>• We place strong emphasis on emotional awareness, communication and relational safety.</p>
+    <p>• Rather than focusing on performance, we support awareness, resilience and authenticity.</p>
+    <p>• Our approach is trauma-sensitive and inclusive.</p>
+    <p>• We see education as the creation of conditions for deeper connection.</p>
+
   </div>
 
 </section>
