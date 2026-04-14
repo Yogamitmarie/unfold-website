@@ -11,7 +11,7 @@
 <style>
 
 /* ─────────────────────────────
-   🌿 UNFOLD DESIGN SYSTEM v1
+   🌿 UNFOLD DESIGN SYSTEM v3
 ───────────────────────────── */
 
 :root {
@@ -20,11 +20,11 @@
   --soft: #c8c2b8;
   --accent: #6b7b6a;
 
-  --space-xs: 8px;
-  --space-sm: 16px;
-  --space-md: 32px;
-  --space-lg: 64px;
-  --space-xl: 120px;
+  --xs: 8px;
+  --sm: 16px;
+  --md: 32px;
+  --lg: 64px;
+  --xl: 120px;
 }
 
 /* 🌿 BASE */
@@ -45,33 +45,74 @@ p {
   font-size: 16px;
   line-height: 1.7;
   font-weight: 300;
+  max-width: 65ch;
 }
 
-/* 🌿 NAV */
+/* 🌿 NAVBAR */
 .navbar {
   position: fixed;
-  width: 100%;
   top: 0;
+  width: 100%;
   display: flex;
   justify-content: space-between;
-  padding: var(--space-sm) var(--space-md);
+  align-items: center;
+  padding: var(--sm) var(--md);
   background: rgba(243,242,236,0.85);
   backdrop-filter: blur(10px);
   z-index: 100;
 }
 
+/* LEFT NAV */
+.nav-left {
+  display: flex;
+  gap: var(--sm);
+  align-items: center;
+}
+
+/* RIGHT NAV */
+.nav-right {
+  display: flex;
+  gap: var(--sm);
+  align-items: center;
+}
+
+/* LINKS */
 .navbar a {
   text-decoration: none;
   color: var(--text);
-  margin-left: var(--space-sm);
-  font-size: 12px;
+  font-size: 11px;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  transition: all 0.3s ease;
+  cursor: pointer;
 }
 
-/* 🌿 MOBILE MENU (CALM DRAWER) */
-.mobile-menu {
+/* 🌿 HOVER UX (IMPORTANT) */
+.navbar a:hover {
+  color: var(--soft);
+}
+
+/* 🌿 ABOUT DROPDOWN */
+.dropdown {
+  position: relative;
+}
+
+.dropdown-content {
   display: none;
+  position: absolute;
+  top: 20px;
+  background: rgba(243,242,236,0.95);
+  min-width: 160px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+.dropdown-content a {
+  display: block;
+  padding: var(--xs) var(--sm);
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
 }
 
 /* 🌿 HERO */
@@ -79,7 +120,7 @@ p {
   min-height: 80vh;
   display: flex;
   align-items: center;
-  padding: var(--space-xl) var(--space-md) var(--space-md);
+  padding: var(--xl) var(--md) var(--md);
 }
 
 .hero h1 {
@@ -91,8 +132,7 @@ p {
 .statement {
   font-family: 'Playfair Display', serif;
   font-size: 2em;
-  padding: var(--space-lg) var(--space-md);
-  max-width: 700px;
+  padding: var(--lg) var(--md);
 }
 
 /* 🌿 GRID */
@@ -106,7 +146,7 @@ p {
   height: 45vh;
   overflow: hidden;
   text-decoration: none;
-  color: white;
+  color: var(--text);
 }
 
 .card-bg {
@@ -115,7 +155,7 @@ p {
   height: 100%;
   background-size: cover;
   background-position: center;
-  transition: transform 0.6s ease;
+  transition: transform 0.7s ease;
 }
 
 .card:hover .card-bg {
@@ -125,48 +165,12 @@ p {
 .card-text {
   position: relative;
   z-index: 2;
-  padding: var(--space-md);
+  padding: var(--md);
   background: rgba(243,242,236,0.85);
-  color: var(--text);
   max-width: 320px;
 }
 
-.card::after {
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.2);
-}
-
-/* 🌿 TEXT BLOCK */
-.text-block {
-  padding: var(--space-xl) var(--space-md);
-  max-width: 750px;
-}
-
-/* 🌿 TEAM */
-.team-core {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-lg);
-  padding: var(--space-md);
-  max-width: 900px;
-}
-
-.team-member {
-  display: flex;
-  gap: var(--space-md);
-  align-items: flex-start;
-}
-
-.team-member img {
-  width: 160px;
-  height: 200px;
-  object-fit: cover;
-}
-
-/* 🌿 PAGES */
+/* 🌿 PAGE SYSTEM */
 .page {
   opacity: 0;
   transform: translateY(10px);
@@ -183,27 +187,35 @@ p {
   position: relative;
 }
 
+/* 🌿 TEAM */
+.team-core {
+  display: flex;
+  flex-direction: column;
+  gap: var(--lg);
+  padding: var(--md);
+}
+
+.team-member {
+  display: flex;
+  gap: var(--md);
+  align-items: flex-start;
+}
+
+.team-member img {
+  width: 160px;
+  height: 200px;
+  object-fit: cover;
+}
+
 /* 🌿 FOOTER */
 .footer {
-  padding: var(--space-lg) var(--space-md);
+  padding: var(--lg) var(--md);
   border-top: 1px solid #ddd;
   display: flex;
   justify-content: space-between;
 }
 
-/* 🌿 REVEAL ANIMATION */
-.reveal {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: all 0.8s ease;
-}
-
-.reveal.active {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* 🌿 MOBILE UX */
+/* 🌿 MOBILE */
 @media (max-width: 768px) {
 
   .grid {
@@ -220,9 +232,8 @@ p {
 
   .navbar {
     flex-direction: column;
-    gap: 10px;
+    gap: var(--xs);
   }
-
 }
 
 </style>
@@ -233,13 +244,28 @@ p {
 <!-- 🌿 NAV -->
 <div class="navbar">
 
-  <div>UNFOLD</div>
+  <div class="nav-left">
+    <a onclick="showPage('home')">UNFOLD</a>
+    <a onclick="showPage('home')">Home</a>
 
-  <div>
-    <a href="#" onclick="showPage('home')">Home</a>
-    <a href="#" onclick="showPage('vision')">Vision</a>
-    <a href="#" onclick="showPage('team')">Team</a>
-    <a href="#" onclick="showPage('methodology')">Methodology</a>
+    <!-- ABOUT -->
+    <div class="dropdown">
+      <a>About</a>
+      <div class="dropdown-content">
+        <a onclick="showPage('vision')">Vision</a>
+        <a onclick="showPage('team')">Team</a>
+        <a onclick="showPage('methodology')">Methodology</a>
+      </div>
+    </div>
+
+    <a>Local Programs</a>
+    <a>International Programs</a>
+    <a>Contact</a>
+  </div>
+
+  <div class="nav-right">
+    <a>ENG</a>
+    <a>DE</a>
   </div>
 
 </div>
@@ -247,20 +273,20 @@ p {
 <!-- 🌿 HOME -->
 <section id="home" class="page active">
 
-  <section class="hero reveal">
+  <section class="hero">
     <div>
       <h1>UNFOLD</h1>
       <p>Embodied Learning Across Europe</p>
     </div>
   </section>
 
-  <div class="statement reveal">
+  <div class="statement">
     Regulation before performance.
   </div>
 
   <section class="grid">
 
-    <a href="#" class="card reveal">
+    <a class="card" onclick="showPage('vision')">
       <div class="card-bg" style="background-image:url('images/about.jpg')"></div>
       <div class="card-text">
         <h2>About</h2>
@@ -268,7 +294,7 @@ p {
       </div>
     </a>
 
-    <a href="#" class="card reveal">
+    <a class="card">
       <div class="card-bg" style="background-image:url('images/local.jpg')"></div>
       <div class="card-text">
         <h2>Local Programs</h2>
@@ -276,7 +302,7 @@ p {
       </div>
     </a>
 
-    <a href="#" class="card reveal">
+    <a class="card">
       <div class="card-bg" style="background-image:url('images/international.jpg')"></div>
       <div class="card-text">
         <h2>International Programs</h2>
@@ -284,7 +310,7 @@ p {
       </div>
     </a>
 
-    <a href="#" class="card reveal">
+    <a class="card">
       <div class="card-bg" style="background-image:url('images/contact.jpg')"></div>
       <div class="card-text">
         <h2>Contact</h2>
@@ -299,13 +325,10 @@ p {
 <!-- 🌿 VISION -->
 <section id="vision" class="page">
 
-  <div class="text-block reveal">
+  <div class="text-block">
     <h2>Our Vision</h2>
-
-    <p>UNFOLD e.V. works at the intersection of youth empowerment, mental health, embodiment and peace education.</p>
-    <p>We create spaces for reconnection — with self, others and the world.</p>
-    <p>We understand resilience as connection, not performance.</p>
-    <p>Transformation begins in the body.</p>
+    <p>UNFOLD works at the intersection of youth empowerment, mental health and embodied learning.</p>
+    <p>We create spaces for reconnection and presence.</p>
   </div>
 
 </section>
@@ -313,26 +336,26 @@ p {
 <!-- 🌿 TEAM -->
 <section id="team" class="page">
 
-  <div class="text-block reveal">
+  <div class="text-block">
     <h2>Our Team</h2>
-    <p>We are a collective of educators, facilitators and practitioners working across Europe.</p>
+    <p>A collective of educators, facilitators and practitioners across Europe.</p>
   </div>
 
   <div class="team-core">
 
-    <div class="team-member reveal">
+    <div class="team-member">
       <img src="images/Profilbild_Marie.jpg">
       <div>
         <h3>Marie Wächter</h3>
-        <p>Yoga teacher & somatic practitioner focused on mental health and embodiment.</p>
+        <p>Yoga teacher & somatic practitioner.</p>
       </div>
     </div>
 
-    <div class="team-member reveal">
+    <div class="team-member">
       <img src="images/Profilbild_Marenka.jpg">
       <div>
         <h3>Marenka Sedlaczcek</h3>
-        <p>Pedagogue & theatre educator working with embodiment and relational learning.</p>
+        <p>Pedagogue & theatre educator.</p>
       </div>
     </div>
 
@@ -343,14 +366,10 @@ p {
 <!-- 🌿 METHODOLOGY -->
 <section id="methodology" class="page">
 
-  <div class="text-block reveal">
+  <div class="text-block">
     <h2>Our Methodology</h2>
-
-    <p>We work through embodied, relational and experiential learning.</p>
-    <p>Movement, mindfulness, dialogue and nature are core elements.</p>
-    <p>We prioritise presence over performance.</p>
-    <p>Learning is becoming in relation.</p>
-
+    <p>Embodied, relational and experiential learning.</p>
+    <p>We integrate movement, mindfulness and dialogue.</p>
   </div>
 
 </section>
@@ -359,14 +378,13 @@ p {
 <div class="footer">
   <div>UNFOLD e.V.</div>
   <div>
-    <a href="#">Instagram</a>
-    <a href="#">Email</a>
+    <a>Instagram</a>
+    <a>Email</a>
   </div>
 </div>
 
 <script>
 
-/* 🌿 PAGE SWITCH */
 function showPage(id) {
   document.querySelectorAll('.page').forEach(p => {
     p.classList.remove('active');
@@ -376,19 +394,6 @@ function showPage(id) {
 
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
-
-/* 🌿 SCROLL REVEAL */
-function revealOnScroll() {
-  document.querySelectorAll('.reveal').forEach(el => {
-    const top = el.getBoundingClientRect().top;
-    if (top < window.innerHeight - 80) {
-      el.classList.add('active');
-    }
-  });
-}
-
-window.addEventListener('scroll', revealOnScroll);
-window.addEventListener('load', revealOnScroll);
 
 </script>
 
