@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Unfold e.V.</title>
+<title>UNFOLD e.V.</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 
@@ -14,158 +14,116 @@
 body {
   margin: 0;
   font-family: 'Inter', sans-serif;
-  background: #f5f5f3;
+  background: #f5f5f2;
   color: #1a1a1a;
 }
 
 /* 🌿 NAVBAR */
 .navbar {
   position: fixed;
-  top: 0;
   width: 100%;
-  background: rgba(245,245,243,0.9);
+  top: 0;
   display: flex;
-  justify-content: center;
-  gap: 25px;
-  padding: 15px;
-  backdrop-filter: blur(6px);
-  font-size: 14px;
+  justify-content: space-between;
+  padding: 20px 40px;
+  background: rgba(245,245,242,0.8);
+  backdrop-filter: blur(8px);
 }
 
 .navbar a {
   text-decoration: none;
   color: #1a1a1a;
+  margin-left: 20px;
+  font-size: 14px;
 }
 
-.lang {
-  position: absolute;
-  right: 20px;
-}
-
-/* 🌿 SPACER */
-.spacer { height: 60px; }
-
-/* 🌿 HERO (kleiner & cleaner) */
+/* 🌿 HERO */
 .hero {
-  padding: 120px 20px 80px;
-  text-align: center;
+  height: 80vh;
+  display: flex;
+  align-items: center;
+  padding: 120px 40px 40px 40px;
 }
 
 .hero h1 {
   font-family: 'Playfair Display', serif;
-  font-size: 2.4em;
-  margin-bottom: 10px;
+  font-size: 4em;
+  margin: 0;
 }
 
 .hero p {
-  max-width: 500px;
-  margin: auto;
-  font-size: 15px;
+  margin-top: 10px;
+  font-size: 18px;
 }
 
 /* 🌿 STATEMENT */
 .statement {
-  text-align: center;
   font-family: 'Playfair Display', serif;
-  font-size: 20px;
-  margin: 80px auto;
-  max-width: 500px;
+  font-size: 2em;
+  padding: 80px 40px;
+  max-width: 700px;
 }
 
-/* 🌿 TEASER SECTIONS */
-.teaser {
+/* 🌿 TEASER GRID */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.card {
   position: relative;
-  height: 50vh;
+  height: 45vh;
   overflow: hidden;
-  display: flex;
-  align-items: flex-end;
-  color: white;
   text-decoration: none;
+  color: white;
 }
 
-.teaser-bg {
+.card-bg {
   position: absolute;
   width: 100%;
-  height: 110%;
+  height: 100%;
   background-size: cover;
   background-position: center;
   transition: transform 0.6s ease;
 }
 
-.teaser:hover .teaser-bg {
+.card:hover .card-bg {
   transform: scale(1.05);
 }
 
-.teaser-overlay {
+.card-text {
+  position: relative;
+  z-index: 2;
+  padding: 40px;
+}
+
+.card::after {
+  content: "";
   position: absolute;
   width: 100%;
   height: 100%;
-  background: linear-gradient(to top, rgba(0,0,0,0.6), transparent);
+  background: rgba(0,0,0,0.3);
 }
 
-.teaser-text {
-  position: relative;
-  padding: 30px;
-  max-width: 500px;
-}
-
-.teaser-text h2 {
-  font-family: 'Playfair Display', serif;
-  margin-bottom: 5px;
-}
-
-/* 🌿 CONTACT */
-.section {
-  padding: 80px 20px;
-  max-width: 700px;
-  margin: auto;
-}
-
-.contact-form {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  margin-top: 30px;
-}
-
-.contact-form input,
-.contact-form textarea {
-  border: none;
-  border-bottom: 1px solid #1a1a1a;
-  padding: 10px;
-  background: transparent;
-}
-
-.contact-form button {
-  margin-top: 20px;
-  padding: 12px;
-  border: 1px solid #1a1a1a;
-  background: transparent;
-  cursor: pointer;
-}
-
-.contact-form button:hover {
-  background: #1a1a1a;
-  color: white;
+/* 🌿 TEXT BLOCK */
+.text-block {
+  padding: 100px 40px;
+  max-width: 600px;
+  font-size: 18px;
 }
 
 /* 🌿 FOOTER */
 .footer {
+  padding: 60px 40px;
   border-top: 1px solid #ddd;
-  padding: 30px;
   display: flex;
-  justify-content: center;
-  gap: 30px;
-  font-size: 14px;
+  justify-content: space-between;
 }
 
 .footer a {
   text-decoration: none;
   color: #1a1a1a;
-}
-
-.footer a:hover {
-  opacity: 0.6;
+  margin-right: 20px;
 }
 
 </style>
@@ -175,26 +133,21 @@ body {
 
 <!-- 🌿 NAV -->
 <div class="navbar">
-  <a href="index.html">Home</a>
-  <a href="about.html">About</a>
-  <a href="local.html">Local Work</a>
-  <a href="international.html">International Work</a>
-  <a href="contact.html">Contact</a>
-
-  <div class="lang">
-    <a href="/de/index.html">DE</a>
+  <div>UNFOLD</div>
+  <div>
+    <a href="#">About</a>
+    <a href="#">Local</a>
+    <a href="#">International</a>
+    <a href="#">Contact</a>
   </div>
 </div>
 
-<div class="spacer"></div>
-
 <!-- 🌿 HERO -->
 <section class="hero">
-  <h1>Unfold e.V.</h1>
-  <p>
-    Not another program.  
-    A different way of being.
-  </p>
+  <div>
+    <h1>UNFOLD</h1>
+    <p>Embodied Learning Across Europe</p>
+  </div>
 </section>
 
 <!-- 🌿 STATEMENT -->
@@ -202,67 +155,57 @@ body {
   Regulation before performance.
 </div>
 
-<!-- 🌿 TEASERS -->
+<!-- 🌿 GRID -->
+<section class="grid">
 
-<a href="about.html" class="teaser">
-  <div class="teaser-bg" style="background-image: url('images/about.jpg')"></div>
-  <div class="teaser-overlay"></div>
-  <div class="teaser-text">
-    <h2>About</h2>
-    <p>Who we are and what shapes our work</p>
-  </div>
-</a>
+  <a href="#" class="card">
+    <div class="card-bg" style="background-image:url('images/about.jpg')"></div>
+    <div class="card-text">
+      <h2>About</h2>
+      <p>Who we are</p>
+    </div>
+  </a>
 
-<a href="local.html" class="teaser">
-  <div class="teaser-bg" style="background-image: url('images/local.jpg')"></div>
-  <div class="teaser-overlay"></div>
-  <div class="teaser-text">
-    <h2>Local Work</h2>
-    <p>Projects in schools and communities</p>
-  </div>
-</a>
+  <a href="#" class="card">
+    <div class="card-bg" style="background-image:url('images/local.jpg')"></div>
+    <div class="card-text">
+      <h2>Local Work</h2>
+      <p>Schools & communities</p>
+    </div>
+  </a>
 
-<a href="international.html" class="teaser">
-  <div class="teaser-bg" style="background-image: url('images/international.jpg')"></div>
-  <div class="teaser-overlay"></div>
-  <div class="teaser-text">
-    <h2>International Work</h2>
-    <p>Programs and collaborations across Europe</p>
-  </div>
-</a>
+  <a href="#" class="card">
+    <div class="card-bg" style="background-image:url('images/international.jpg')"></div>
+    <div class="card-text">
+      <h2>International</h2>
+      <p>Across Europe</p>
+    </div>
+  </a>
 
-<a href="contact.html" class="teaser">
-  <div class="teaser-bg" style="background-image: url('images/contact.jpg')"></div>
-  <div class="teaser-overlay"></div>
-  <div class="teaser-text">
-    <h2>Contact</h2>
-    <p>Get in touch and collaborate</p>
-  </div>
-</a>
+  <a href="#" class="card">
+    <div class="card-bg" style="background-image:url('images/contact.jpg')"></div>
+    <div class="card-text">
+      <h2>Contact</h2>
+      <p>Work with us</p>
+    </div>
+  </a>
 
-<!-- 🌿 STATEMENT -->
-<div class="statement">
-  The body is not a tool.
-</div>
-
-<!-- 🌿 CONTACT -->
-<section class="section">
-  <h2>Get in touch</h2>
-  <p>We are open for collaborations and ideas.</p>
-
-  <form action="https://formspree.io/f/your-id" method="POST" class="contact-form">
-    <input type="text" name="name" placeholder="Your name" required>
-    <input type="email" name="email" placeholder="Your email" required>
-    <textarea name="message" placeholder="Your message" rows="5" required></textarea>
-    <button type="submit">Send message</button>
-  </form>
 </section>
 
+<!-- 🌿 TEXT -->
+<div class="text-block">
+  We create spaces where young people can slow down,
+  feel and reconnect — with themselves, others and the world.
+</div>
+
 <!-- 🌿 FOOTER -->
-<footer class="footer">
-  <a href="https://instagram.com/deinprofil" target="_blank">Instagram</a>
-  <a href="mailto:hello@unfold.org">Email</a>
-</footer>
+<div class="footer">
+  <div>Unfold e.V.</div>
+  <div>
+    <a href="https://instagram.com">Instagram</a>
+    <a href="mailto:youremail@email.com">Email</a>
+  </div>
+</div>
 
 </body>
 </html>
