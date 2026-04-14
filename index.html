@@ -26,8 +26,9 @@ body {
   display: flex;
   justify-content: space-between;
   padding: 20px 40px;
-  background: rgba(243,242,236,0.8);
+  background: rgba(243,242,236,0.85);
   backdrop-filter: blur(8px);
+  z-index: 100;
 }
 
 .navbar a {
@@ -37,23 +38,42 @@ body {
   font-size: 14px;
 }
 
+/* 🌿 DROPDOWN */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background: rgba(243,242,236,0.95);
+  min-width: 180px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  backdrop-filter: blur(10px);
+}
+
+.dropdown-content a {
+  display: block;
+  padding: 10px 15px;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
 /* 🌿 HERO */
 .hero {
   height: 80vh;
   display: flex;
   align-items: center;
-  padding: 120px 40px 40px 40px;
+  padding: 120px 40px 40px;
 }
 
 .hero h1 {
   font-family: 'Playfair Display', serif;
   font-size: 4em;
   margin: 0;
-}
-
-.hero p {
-  margin-top: 10px;
-  font-size: 18px;
 }
 
 /* 🌿 STATEMENT */
@@ -111,8 +131,36 @@ body {
 /* 🌿 TEXT BLOCK */
 .text-block {
   padding: 100px 40px;
-  max-width: 600px;
-  font-size: 18px;
+  max-width: 700px;
+}
+
+/* 🌿 TEAM */
+.team-core {
+  display: flex;
+  gap: 60px;
+  padding: 40px;
+  flex-wrap: wrap;
+}
+
+.team-member {
+  display: flex;
+  gap: 20px;
+  max-width: 520px;
+}
+
+.team-member img {
+  width: 140px;
+  height: 180px;
+  object-fit: cover;
+}
+
+/* 🌿 PAGES */
+.about-page {
+  display: none;
+}
+
+.about-page.active {
+  display: block;
 }
 
 /* 🌿 FOOTER */
@@ -123,12 +171,6 @@ body {
   justify-content: space-between;
 }
 
-.footer a {
-  text-decoration: none;
-  color: #2a2a2a;
-  margin-right: 20px;
-}
-
 </style>
 </head>
 
@@ -136,16 +178,31 @@ body {
 
 <!-- 🌿 NAV -->
 <div class="navbar">
+
   <div>UNFOLD</div>
+
   <div>
-    <a href="#">About</a>
-    <a href="#">Local</a>
-    <a href="#">International</a>
+    <a href="#" onclick="showPage('home')">Home</a>
+
+    <div class="dropdown">
+      <a href="#">About</a>
+      <div class="dropdown-content">
+        <a href="#" onclick="showPage('vision')">Our Vision</a>
+        <a href="#" onclick="showPage('team')">Our Team</a>
+        <a href="#" onclick="showPage('methodology')">Our Methodology</a>
+      </div>
+    </div>
+
+    <a href="#">Local Programs</a>
+    <a href="#">International Programs</a>
     <a href="#">Contact</a>
   </div>
+
 </div>
 
-<!-- 🌿 HERO -->
+<!-- 🌿 HOME -->
+<section id="home" class="about-page active">
+
 <section class="hero">
   <div>
     <h1>UNFOLD</h1>
@@ -153,12 +210,10 @@ body {
   </div>
 </section>
 
-<!-- 🌿 STATEMENT -->
 <div class="statement">
   Regulation before performance.
 </div>
 
-<!-- 🌿 GRID -->
 <section class="grid">
 
   <a href="#" class="card">
@@ -195,20 +250,112 @@ body {
 
 </section>
 
-<!-- 🌿 TEXT -->
 <div class="text-block">
   We create spaces where young people can slow down,
   feel and reconnect — with themselves, others and the world.
 </div>
 
+</section>
+
+<!-- 🌿 VISION -->
+<section id="vision" class="about-page">
+
+<div class="text-block">
+<h2>Our Vision</h2>
+
+<p>UNFOLD e.V. is a youth-led, non-profit organization based in Germany working at the intersection of youth empowerment, mental health, embodiment and peace education.</p>
+
+<p>We create safe, inclusive and experiential learning spaces where young people and youth workers can reconnect — with themselves, others, and the world around them.</p>
+
+<p>We see resilience not as performance, but as the capacity to stay connected.</p>
+
+<p>We aim to contribute to a more compassionate Europe through embodied, relational education.</p>
+
+<p>Transformation begins in the body — in presence and awareness.</p>
+</div>
+
+</section>
+
+<!-- 🌿 TEAM -->
+<section id="team" class="about-page">
+
+<div class="text-block">
+<h2>Our Team</h2>
+
+<p>UNFOLD is carried by a small collective of educators, facilitators and practitioners.</p>
+
+<p>We combine experience from education, therapy, movement, theatre pedagogy, psychology and community work.</p>
+
+<p>What connects us is a shared orientation toward presence, honesty and relational learning.</p>
+</div>
+
+<div class="team-core">
+
+<div class="team-member">
+<img src="images/marie.jpg">
+<div>
+<h3>Marie Wächter</h3>
+<p>Yoga teacher and body-oriented practitioner focusing on mental health and somatic awareness.</p>
+</div>
+</div>
+
+<div class="team-member">
+<img src="images/marenka.jpg">
+<div>
+<h3>Marenka Sedlaczcek</h3>
+<p>Pedagogue and theatre educator focusing on embodiment and relational learning.</p>
+</div>
+</div>
+
+</div>
+
+<div class="text-block">
+<h3>Extended Team</h3>
+<p>Growing network of educators and youth workers across Europe.</p>
+</div>
+
+</section>
+
+<!-- 🌿 METHODOLOGY -->
+<section id="methodology" class="about-page">
+
+<div class="text-block">
+<h2>Our Methodology</h2>
+
+<p>Our methodology is rooted in embodied, relational and experiential learning.</p>
+
+<p>We integrate movement, mindfulness, dialogue, creativity and nature-based practices.</p>
+
+<p>We work with emotional awareness, communication and relational safety.</p>
+
+<p>We focus on presence rather than performance.</p>
+
+<p>Education is the creation of conditions for deeper connection — to self, others and the world.</p>
+</div>
+
+</section>
+
 <!-- 🌿 FOOTER -->
 <div class="footer">
   <div>Unfold e.V.</div>
   <div>
-    <a href="https://instagram.com">Instagram</a>
-    <a href="mailto:youremail@email.com">Email</a>
+    <a href="#">Instagram</a>
+    <a href="#">Email</a>
   </div>
 </div>
+
+<script>
+function showPage(id) {
+
+  document.querySelectorAll('.about-page').forEach(p => {
+    p.classList.remove('active');
+  });
+
+  document.getElementById(id).classList.add('active');
+
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+</script>
 
 </body>
 </html>
