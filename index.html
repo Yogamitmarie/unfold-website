@@ -1,214 +1,96 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<div id="about" class="page">
 
-<title>UNFOLD e.V.</title>
+  <!-- VISION -->
+  <section id="vision" class="about-page">
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <div class="text-block">
+      <h2>Our Vision</h2>
 
-<style>
+      <p>UNFOLD e.V. is a youth-led, non-profit organization based in Germany working at the intersection of youth empowerment, mental health, embodiment and peace education.</p>
 
-/* 🌿 BASE */
-body {
-  margin: 0;
-  font-family: 'Inter', sans-serif;
-  background: #f3f2ec;
-  color: #2a2a2a;
-}
+      <p>We create safe, inclusive and experiential learning spaces where young people and youth workers can reconnect — with themselves, with others, and with the wider social and natural world they are part of.</p>
 
-/* 🌿 NAVBAR */
-.navbar {
-  position: fixed;
-  width: 100%;
-  top: 0;
-  display: flex;
-  justify-content: space-between;
-  padding: 20px 40px;
-  background: rgba(243,242,236,0.8);
-  backdrop-filter: blur(8px);
-}
+      <p>We work with the understanding that many young people today grow up in environments shaped by pressure, acceleration and emotional disconnection. In response, we see resilience not as the ability to perform under stress, but as the capacity to stay connected to oneself and others.</p>
 
-.navbar a {
-  text-decoration: none;
-  color: #2a2a2a;
-  margin-left: 20px;
-  font-size: 14px;
-}
+      <p>Our vision is to contribute to a more peaceful and compassionate Europe by integrating personal development with civic engagement, intercultural dialogue and social responsibility.</p>
 
-/* 🌿 HERO */
-.hero {
-  height: 80vh;
-  display: flex;
-  align-items: center;
-  padding: 120px 40px 40px 40px;
-}
+      <p>We believe that transformation begins in the body — in presence, awareness and the ability to feel.</p>
 
-.hero h1 {
-  font-family: 'Playfair Display', serif;
-  font-size: 4em;
-  margin: 0;
-}
-
-.hero p {
-  margin-top: 10px;
-  font-size: 18px;
-}
-
-/* 🌿 STATEMENT */
-.statement {
-  font-family: 'Playfair Display', serif;
-  font-size: 2em;
-  padding: 80px 40px;
-  max-width: 700px;
-}
-
-/* 🌿 GRID */
-.grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-}
-
-.card {
-  position: relative;
-  height: 45vh;
-  overflow: hidden;
-  text-decoration: none;
-  color: white;
-}
-
-.card-bg {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background-size: cover;
-  background-position: center;
-  transition: transform 0.6s ease;
-}
-
-.card:hover .card-bg {
-  transform: scale(1.05);
-}
-
-.card-text {
-  position: relative;
-  z-index: 2;
-  padding: 40px;
-  background: rgba(243,242,236,0.85);
-  color: #2a2a2a;
-  max-width: 300px;
-}
-
-.card::after {
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.25);
-}
-
-/* 🌿 TEXT BLOCK */
-.text-block {
-  padding: 100px 40px;
-  max-width: 600px;
-  font-size: 18px;
-}
-
-/* 🌿 FOOTER */
-.footer {
-  padding: 60px 40px;
-  border-top: 1px solid #ddd;
-  display: flex;
-  justify-content: space-between;
-}
-
-.footer a {
-  text-decoration: none;
-  color: #2a2a2a;
-  margin-right: 20px;
-}
-
-</style>
-</head>
-
-<body>
-
-<!-- 🌿 NAV -->
-<div class="navbar">
-  <div>UNFOLD</div>
-  <div>
-    <a href="#">About</a>
-    <a href="#">Local</a>
-    <a href="#">International</a>
-    <a href="#">Contact</a>
-  </div>
-</div>
-
-<!-- 🌿 HERO -->
-<section class="hero">
-  <div>
-    <h1>UNFOLD</h1>
-    <p>Embodied Learning Across Europe</p>
-  </div>
-</section>
-
-<!-- 🌿 STATEMENT -->
-<div class="statement">
-  Regulation before performance.
-</div>
-
-<!-- 🌿 GRID -->
-<section class="grid">
-
-  <a href="#" class="card">
-    <div class="card-bg" style="background-image:url('images/about.jpg')"></div>
-    <div class="card-text">
-      <h2>About</h2>
-      <p>Who we are</p>
     </div>
-  </a>
+  </section>
 
-  <a href="#" class="card">
-    <div class="card-bg" style="background-image:url('images/local.jpg')"></div>
-    <div class="card-text">
-      <h2>Local Programs</h2>
-      <p>Schools & communities</p>
+
+  <!-- TEAM -->
+  <section id="team" class="about-page" style="display:none;">
+
+    <div class="text-block">
+      <h2>Our Team</h2>
+
+      <p>UNFOLD is carried by a small collective of educators, facilitators and practitioners with long-term experience in youth work, non-formal education and embodied learning.</p>
+
+      <p>Our work is shaped as much by practice as by professional background — in education, therapy, movement, theatre pedagogy, psychology, agriculture and community work.</p>
+
+      <p>What connects us is a shared orientation: to create spaces where people can slow down, listen inwardly, and relate to each other in more honest and human ways.</p>
+
+      <p>We are part of an international network of youth workers and educators working across Europe in the fields of non-formal education, peacebuilding and embodied learning.</p>
     </div>
-  </a>
 
-  <a href="#" class="card">
-    <div class="card-bg" style="background-image:url('images/international.jpg')"></div>
-    <div class="card-text">
-      <h2>International Programs</h2>
-      <p>Across Europe</p>
+    <!-- CORE TEAM -->
+    <div class="team-core">
+
+      <div class="team-member">
+        <img src="images/marie.jpg" />
+        <div>
+          <h3>Marie Wächter</h3>
+          <p>
+            Chairwoman of UNFOLD e.V., yoga teacher and body-oriented practitioner with a focus on mental health, self-regulation and somatic awareness.
+          </p>
+        </div>
+      </div>
+
+      <div class="team-member">
+        <img src="images/marenka.jpg" />
+        <div>
+          <h3>Marenka Sedlaczcek</h3>
+          <p>
+            Vice-Chairwoman, pedagogue, primary school teacher and theatre educator with extensive international teaching experience and a focus on embodiment, empowerment and relational awareness.
+          </p>
+        </div>
+      </div>
+
     </div>
-  </a>
 
-  <a href="#" class="card">
-    <div class="card-bg" style="background-image:url('images/contact.jpg')"></div>
-    <div class="card-text">
-      <h2>Contact</h2>
-      <p>Work with us</p>
+    <!-- EXTENDED TEAM -->
+    <div class="text-block">
+      <h3>Extended Team</h3>
+      <p>The Extended Team is a growing network of youth workers, educators and facilitators across Europe who contribute to UNFOLD through collaboration, exchange and shared projects.</p>
+      <p>More information coming soon.</p>
     </div>
-  </a>
 
-</section>
+  </section>
 
-<!-- 🌿 TEXT -->
-<div class="text-block">
-  We create spaces where young people can slow down,
-  feel and reconnect — with themselves, others and the world.
+
+  <!-- METHODOLOGY -->
+  <section id="methodology" class="about-page" style="display:none;">
+
+    <div class="text-block">
+      <h2>Our Methodology</h2>
+
+      <p>Our methodology is rooted in the understanding that learning is not only cognitive, but deeply embodied, relational and experiential.</p>
+
+      <p>We work through non-formal education methods that integrate movement, mindfulness, creative expression, dialogue and nature-based practices.</p>
+
+      <p>In practice, this can include somatic awareness exercises, breath and movement work, guided reflection, theatre-based exploration, group dialogue and time in nature.</p>
+
+      <p>We place strong emphasis on emotional awareness, communication and relational safety — including practices of consent, boundary awareness and nonviolent communication.</p>
+
+      <p>Rather than focusing on performance, self-improvement or outcomes, we support processes where young people can develop awareness, resilience and authenticity from within.</p>
+
+      <p>Our approach is trauma-sensitive and inclusive. It is designed to support both individual wellbeing and collective learning processes.</p>
+
+      <p>We see education not as the transmission of knowledge, but as the creation of conditions in which people can come into deeper contact with themselves, with others, and with the world.</p>
+
+    </div>
+  </section>
+
 </div>
-
-<!-- 🌿 FOOTER -->
-<div class="footer">
-  <div>Unfold e.V.</div>
-  <div>
-    <a href="https://instagram.com">Instagram</a>
-    <a href="mailto:youremail@email.com">Email</a>
-  </div>
-</div>
-
-</body>
-</html>
