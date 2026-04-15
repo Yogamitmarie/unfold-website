@@ -53,24 +53,52 @@ body {
   cursor: pointer;
 }
 
+/* ✅ NEW NAV (smooth dropdown) */
+.dropbtn {
+  background: none;
+  border: none;
+  font: inherit;
+  color: var(--text);
+  cursor: pointer;
+  padding: 0;
+}
+
 /* DROPDOWN */
-.dropdown { position: relative; }
+.dropdown { 
+  position: relative;
+}
 
 .dropdown-content {
-  display: none;
+  display: block;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: 0.25s ease;
   position: absolute;
   top: 25px;
   background: white;
   border-radius: 8px;
+  min-width: 180px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  pointer-events: none;
 }
 
 .dropdown:hover .dropdown-content {
-  display: block;
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  pointer-events: auto;
 }
 
 .dropdown-content a {
   display: block;
-  padding: 10px;
+  padding: 12px 14px;
+  text-decoration: none;
+  color: var(--text);
+}
+
+.dropdown-content a:hover {
+  background: rgba(122,143,122,0.08);
 }
 
 /* PAGE */
@@ -236,13 +264,13 @@ button {
 
 <body>
 
-<!-- NAV -->
+<!-- NAV (UPDATED) -->
 <div class="navbar">
   <div class="nav-left">
     <a onclick="showPage('home')">Home</a>
 
     <div class="dropdown">
-      <a>About</a>
+      <button class="dropbtn">About</button>
       <div class="dropdown-content">
         <a onclick="showPage('vision')">Vision</a>
         <a onclick="showPage('team')">Team</a>
@@ -251,7 +279,7 @@ button {
     </div>
 
     <div class="dropdown">
-      <a>Programs</a>
+      <button class="dropbtn">Programs</button>
       <div class="dropdown-content">
         <a>International Programs</a>
         <a>Local Programs</a>
