@@ -29,6 +29,12 @@ body {
   font-family: 'Inter', sans-serif;
   background: var(--bg);
   color: var(--text);
+
+  /* 🌿 FARNE HINTERGRUND */
+  background-image: url("images/fern-bg.png"); /* <-- HIER deine PNG rein */
+  background-repeat: no-repeat;
+  background-position: right bottom;
+  background-size: 35%;
 }
 
 /* 🌿 NAVBAR */
@@ -37,28 +43,34 @@ body {
   top: 0;
   width: 100%;
   display: flex;
-  justify-content: space-between;
-  padding: 14px 24px;
+  justify-content: center; /* zentriert */
+  align-items: center;
+  padding: 16px 24px;
   background: rgba(243,242,236,0.9);
   backdrop-filter: blur(12px);
   z-index: 100;
 }
 
+/* Menü mittig */
 .nav-left {
   display: flex;
-  gap: 18px;
+  gap: 28px;
 }
 
+/* Sprache rechts fixiert */
 .nav-right {
+  position: absolute;
+  right: 30px;
   display: flex;
   gap: 10px;
 }
 
+/* größere Schrift */
 .navbar a {
   text-decoration: none;
   color: var(--text);
-  font-size: 12px;
-  letter-spacing: 0.08em;
+  font-size: 14px; /* größer */
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   cursor: pointer;
 }
@@ -75,13 +87,14 @@ body {
 .dropdown-content {
   display: none;
   position: absolute;
-  top: 22px;
+  top: 24px;
   background: white;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
 }
 
 .dropdown-content a {
   display: block;
-  padding: 10px;
+  padding: 10px 14px;
 }
 
 .dropdown:hover .dropdown-content {
@@ -116,14 +129,22 @@ body {
 }
 
 .hero h1 {
-  font-size: 4em;
+  font-size: 4.5em;
   margin: 0;
+  font-family: 'Playfair Display', serif;
 }
 
-.hero small {
-  font-size: 14px;
-  letter-spacing: 0.1em;
+/* e.V. größer */
+.hero .ev {
+  font-size: 20px;
+  letter-spacing: 0.2em;
+  display: block;
+  margin-top: 10px;
   color: var(--soft);
+}
+
+.hero p {
+  margin-top: 10px;
 }
 
 /* 🌿 FERN OVERLAY */
@@ -191,12 +212,27 @@ body {
   border-top: 1px solid #ddd;
 }
 
-/* 🌿 MOBILE OPTIMIZATION */
+/* Footer Links heller */
+.footer a {
+  color: #fdf6e3; /* creme */
+  text-decoration: none;
+  margin-left: 10px;
+}
+
+.footer a:hover {
+  color: white;
+}
+
+/* 🌿 MOBILE */
 @media (max-width: 768px) {
 
   .nav-left {
     gap: 12px;
     flex-wrap: wrap;
+  }
+
+  .nav-right {
+    right: 15px;
   }
 
   .hero {
@@ -205,11 +241,6 @@ body {
 
   .hero h1 {
     font-size: 2.5em;
-  }
-
-  .fern {
-    width: 120px;
-    top: 10%;
   }
 
   .section {
@@ -258,8 +289,8 @@ body {
   </div>
 
   <div class="nav-right">
-    <a>ENG</a>
-    <a>DE</a>
+    <a href="index.html">ENG</a>
+    <a href="index_de.html">DE</a>
   </div>
 
 </div>
@@ -273,7 +304,7 @@ body {
 
     <div>
       <h1>UNFOLD</h1>
-      <small>e.V.</small>
+      <span class="ev">e.V.</span>
       <p>Embodied Learning Across Europe</p>
     </div>
 
