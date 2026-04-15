@@ -26,12 +26,10 @@ body {
   background: var(--bg);
   color: var(--text);
 
-  /* 🌿 GROSSES FARNELEMENT */
   background-image: url("images/fern-bg.png");
   background-repeat: no-repeat;
   background-position: right center;
   background-size: 65%;
-  opacity: 1;
 }
 
 /* 🌿 NAVBAR */
@@ -76,7 +74,7 @@ body {
   color: var(--green);
 }
 
-/* 🌿 DROPDOWN FIX */
+/* 🌿 DROPDOWN */
 .dropdown {
   position: relative;
   padding-bottom: 8px;
@@ -133,7 +131,6 @@ body {
   margin: 0;
 }
 
-/* e.V. angepasst */
 .hero .ev {
   font-family: 'Playfair Display', serif;
   font-size: 34px;
@@ -175,18 +172,42 @@ body {
   border-radius: 6px;
 }
 
-/* 🌿 CONTACT */
+/* 🌿 CONTACT FORM */
 .contact-form {
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  max-width: 400px;
+  gap: 14px;
+  max-width: 420px;
 }
 
 .contact-form input,
 .contact-form textarea {
   padding: 10px;
   border: 1px solid #ddd;
+  font-family: 'Inter';
+}
+
+/* BUTTON */
+.contact-form button {
+  background: var(--green);
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.contact-form button:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
+}
+
+/* SUCCESS MESSAGE */
+.success-message {
+  display: none;
+  margin-top: 20px;
+  color: var(--green);
 }
 
 /* 🌿 FOOTER */
@@ -250,84 +271,37 @@ body {
   </section>
 </section>
 
-<!-- VISION -->
-<section id="vision" class="page">
-  <div class="section">
-
-<h2>Our Vision</h2>
-
-<p>UNFOLD e.V. is a youth-led, non-profit organization based in Germany working at the intersection of youth empowerment, mental health, embodiment and peace education.</p>
-
-<p>We create safe, inclusive and experiential learning spaces where young people and youth workers can reconnect: with themselves, with others, and with the wider social and natural surrounding they are part of.</p>
-
-<p>We work with the understanding that many young people today grow up in environments shaped by pressure to compete, acceleration and emotional disconnection.</p>
-
-<p>Our vision is to contribute to a more peaceful and compassionate Europe by integrating personal development with civic engagement, intercultural dialogue and social responsibility.</p>
-
-</div>
-</section>
-
-<!-- TEAM -->
-<section id="team" class="page">
-  <div class="section">
-
-<h2>Our Team</h2>
-
-<div class="team">
-
-<div class="member">
-<img src="images/Profilbild_Marie.jpg">
-<div>
-<h3>Marie Wächter</h3>
-<p>Chairwoman of UNFOLD e.V., works as a yoga teacher and body-oriented practitioner with a focus on mental health, self-regulation and somatic awareness.</p>
-</div>
-</div>
-
-<div class="member">
-<img src="images/Profilbild_Marenka.jpg">
-<div>
-<h3>Marenka Sedlaczcek</h3>
-<p>Vice-Chairwoman, works as a pedagogue, primary school teacher and theatre educator with focus on empowerment and expression.</p>
-</div>
-</div>
-
-</div>
-
-</div>
-</section>
-
-<!-- METHODOLOGY -->
-<section id="methodology" class="page">
-  <div class="section">
-
-<h2>Our Methodology</h2>
-
-<p>Our methodology is rooted in embodied, relational and experiential learning.</p>
-
-<p>We integrate movement, mindfulness, creative expression, dialogue and nature-based practices.</p>
-
-<p>Rather than focusing on performance, we support authenticity and resilience.</p>
-
-</div>
-</section>
-
 <!-- CONTACT -->
 <section id="contact" class="page">
   <div class="section">
 
-<h2>Contact</h2>
+    <h2>Contact</h2>
 
-<form class="contact-form" action="https://formspree.io/f/YOUR-ID" method="POST">
-<input type="text" name="name" placeholder="Name">
-<input type="email" name="email" placeholder="Email">
-<textarea name="message" placeholder="Message"></textarea>
-<button type="submit">Send</button>
-</form>
+    <form class="contact-form" id="contact-form">
 
-</div>
+      <label>Name
+        <input type="text" name="name" required>
+      </label>
+
+      <label>Email
+        <input type="email" name="email" required>
+      </label>
+
+      <label>Message
+        <textarea name="message" rows="5" required></textarea>
+      </label>
+
+      <button type="submit">Send Message</button>
+
+    </form>
+
+    <div class="success-message" id="success-message">
+      Thank you for your message. We will get back to you.
+    </div>
+
+  </div>
 </section>
 
-<!-- FOOTER -->
 <div class="footer">
   <div>UNFOLD e.V.</div>
   <div>
@@ -337,6 +311,8 @@ body {
 </div>
 
 <script>
+
+/* PAGE SWITCH */
 function showPage(id) {
   document.querySelectorAll('.page').forEach(p => {
     p.classList.remove('active');
@@ -345,6 +321,27 @@ function showPage(id) {
   document.getElementById(id).classList.add('active');
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
+
+/* FORM SUBMIT (AJAX) */
+const form = document.getElementById("contact-form");
+const success = document.getElementById("success-message");
+
+form.addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  fetch("https://formspree.io/f/mzdydevo", {
+    method: "POST",
+    body: new FormData(form),
+    headers: { 'Accept': 'application/json' }
+  })
+  .then(response => {
+    if (response.ok) {
+      form.reset();
+      success.style.display = "block";
+    }
+  });
+});
+
 </script>
 
 </body>
