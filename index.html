@@ -14,7 +14,7 @@
 :root {
   --bg: #faf8f3;
   --text: #2a2a2a;
-  --green: #4f6447;
+  --green: #3f5a3a;
 }
 
 /* BASE */
@@ -31,51 +31,15 @@ body {
   width: 100%;
   display: flex;
   justify-content: center;
+  align-items: center;
   padding: 18px;
   background: rgba(250,248,243,0.95);
   z-index: 100;
 }
 
-
-
-  <div class="navbar">
-
-  <div class="menu-toggle" onclick="toggleMenu()">
-    ☰
-  </div>
-
-  <div class="nav-left" id="navMenu">
-    <a onclick="showPage('home'); closeMenu()">Home</a>
-
-    <div class="dropdown">
-      <a>About</a>
-      <div class="dropdown-content">
-        <a onclick="showPage('vision'); closeMenu()">Vision</a>
-        <a onclick="showPage('team'); closeMenu()">Team</a>
-        <a onclick="showPage('methodology'); closeMenu()">Methodology</a>
-      </div>
-    </div>
-
-    <div class="dropdown">
-      <a>Programs</a>
-      <div class="dropdown-content">
-        <a>International Programs</a>
-        <a>Local Programs</a>
-      </div>
-    </div>
-
-    <a onclick="showPage('contact'); closeMenu()">Contact</a>
-  </div>
-
-  <div class="nav-right">
-    ENG / DE
-  </div>
-
-</div>
-
 .nav-left {
   display: flex;
-  gap: 28px;
+  gap: 30px;
 }
 
 .nav-right {
@@ -87,6 +51,23 @@ body {
   text-decoration: none;
   color: var(--text);
   cursor: pointer;
+  position: relative;
+}
+
+/* Hover underline */
+.navbar a::after {
+  content:"";
+  position:absolute;
+  width:0;
+  height:1px;
+  bottom:-4px;
+  left:0;
+  background: var(--green);
+  transition:0.3s;
+}
+
+.navbar a:hover::after {
+  width:100%;
 }
 
 /* DROPDOWN */
@@ -98,6 +79,7 @@ body {
   top: 25px;
   background: white;
   border-radius: 8px;
+  padding: 5px 0;
 }
 
 .dropdown:hover .dropdown-content {
@@ -106,7 +88,7 @@ body {
 
 .dropdown-content a {
   display: block;
-  padding: 10px;
+  padding: 10px 16px;
 }
 
 /* PAGE */
@@ -121,7 +103,7 @@ body {
 
 /* HERO */
 .hero {
-  padding: 140px 40px;
+  padding: 160px 40px;
   position: relative;
 }
 
@@ -133,41 +115,27 @@ body {
 
 .ev {
   font-family: 'Playfair Display';
-  font-size: 36px;
+  font-size: 42px;
   color: var(--green);
 }
 
-/* 🌿 FARN HOME */
+/* 🌿 FARN */
 .hero::after {
   content: "";
   position: absolute;
   right: 10%;
-  top: 20%;
-  width: 300px;
-  height: 300px;
+  top: 10%;
+  width: 400px;
+  height: 400px;
   background: url("images/fern-bg.png") no-repeat center/contain;
-  opacity: 0.25;
+  opacity: 0.2;
 }
 
 /* SECTION */
 .section {
   max-width: 900px;
   padding: 100px 40px;
-  line-height: 1.8;
-  position: relative;
-}
-
-/* 🌿 FARN BG OTHER */
-.section::after {
-  content: "";
-  position: absolute;
-  right: 5%;
-  top: 10%;
-  width: 400px;
-  height: 400px;
-  background: url("images/fern-bg.png") no-repeat center/contain;
-  opacity: 0.08;
-  z-index: -1;
+  line-height: 1.7;
 }
 
 h2 {
@@ -189,25 +157,32 @@ h2 {
 
 /* CONTACT */
 .contact-form {
-  max-width: 500px;
+  max-width: 520px;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 18px;
 }
 
 .contact-form input,
 .contact-form textarea {
-  padding: 14px;
+  padding: 16px;
   font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
 }
 
 button {
   background: var(--green);
   color: white;
-  padding: 14px;
+  padding: 16px;
   border-radius: 30px;
   border: none;
   cursor: pointer;
+  transition: 0.25s;
+}
+
+button:hover {
+  transform: translateY(-3px);
 }
 
 /* SUCCESS */
@@ -222,11 +197,12 @@ button {
 
 /* CTA */
 .cta {
-  margin-top: 120px;
+  margin-top: 140px;
 }
 
 .cta h2 {
-  font-size: 2em;
+  font-family: 'Playfair Display';
+  font-size: 2.4em;
 }
 
 /* FOOTER */
@@ -241,105 +217,13 @@ button {
   margin-left: 15px;
 }
 
-<style>
-
-/* ✨ SMOOTH SCROLL */
-html {
-  scroll-behavior: smooth;
-}
-
-/* ✨ SECTION ANIMATION */
-.section {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: all 1s ease;
-}
-
-.section.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* ✨ BUTTON POLISH */
-button {
-  transition: all 0.25s ease;
-}
-
-button:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-}
-
-/* ✨ NAV HOVER */
-.navbar a {
-  position: relative;
-}
-
-.navbar a::after {
-  content: "";
-  position: absolute;
-  width: 0%;
-  height: 1px;
-  bottom: -4px;
-  left: 0;
-  background: var(--green);
-  transition: 0.3s;
-}
-
-.navbar a:hover::after {
-  width: 100%;
-}
-
-/* ✨ FERN SUBTLE FLOAT */
-.hero::after {
-  animation: float 8s ease-in-out infinite;
-}
-
-@keyframes float {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-15px); }
-  100% { transform: translateY(0px); }
-}
-
-  /* 🌿 HAMBURGER */
-.menu-toggle {
-  display: none;
-  position: absolute;
-  left: 20px;
-  font-size: 24px;
-  cursor: pointer;
-}
-
-/* MOBILE MENU */
+/* MOBILE */
 @media(max-width:768px){
-
-  .menu-toggle {
-    display: block;
-  }
 
   .nav-left {
-    display: none;
-    flex-direction: column;
-    background: var(--bg);
-    position: absolute;
-    top: 60px;
-    left: 0;
-    width: 100%;
-    padding: 20px;
-    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
   }
-
-  .nav-left.active {
-    display: flex;
-  }
-
-  .nav-right {
-    right: 20px;
-  }
-}
-
-/* ✨ MOBILE POLISH */
-@media(max-width:768px){
 
   .hero {
     padding: 120px 20px;
@@ -353,56 +237,18 @@ button:hover {
     padding: 80px 20px;
   }
 
+  .member {
+    flex-direction: column;
+  }
+
 }
 
 </style>
-
-<script>
-
-  function toggleMenu(){
-  document.getElementById("navMenu").classList.toggle("active");
-}
-
-function closeMenu(){
-  document.getElementById("navMenu").classList.remove("active");
-}
-  
-/* ✨ SCROLL FADE-IN */
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if(entry.isIntersecting){
-      entry.target.classList.add("visible");
-    }
-  });
-});
-
-  .fade-in {
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeUp 1s ease forwards;
-}
-
-.delay {
-  animation-delay: 0.4s;
-}
-
-@keyframes fadeUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-document.querySelectorAll(".section").forEach(sec=>{
-  observer.observe(sec);
-});
-
-</script>
-  
 </head>
 
 <body>
 
+<!-- NAV -->
 <div class="navbar">
   <div class="nav-left">
     <a onclick="showPage('home')">Home</a>
@@ -427,25 +273,20 @@ document.querySelectorAll(".section").forEach(sec=>{
     <a onclick="showPage('contact')">Contact</a>
   </div>
 
-  <div class="nav-right">
-    ENG / DE
-  </div>
+  <div class="nav-right">ENG / DE</div>
 </div>
 
 <!-- HOME -->
 <section id="home" class="page active">
   <div class="hero">
-
-    <h1 class="fade-in">UNFOLD</h1>
-<div class="ev fade-in delay">e.V.</div>
-      <p>Embodied Learning Across Europe.</p>
-
-    
+    <h1>UNFOLD</h1>
+    <div class="ev">e.V.</div>
+    <p>Embodied Learning Across Europe.</p>
 
     <div class="cta">
       <h2>Let’s get in Touch</h2>
 
-      <form class="contact-form" id="form1">
+      <form class="contact-form">
         <input name="name" placeholder="Name" required>
         <input type="email" name="email" placeholder="Email" required>
         <textarea name="message" rows="6" placeholder="Message" required></textarea>
@@ -453,88 +294,15 @@ document.querySelectorAll(".section").forEach(sec=>{
         <div class="success">Thank you for your message. We will get back to you.</div>
       </form>
     </div>
-
   </div>
-</section>
-
-<!-- VISION -->
-<section id="vision" class="page">
-<div class="section">
-
-<h2>Our Vision</h2>
-
-<p>UNFOLD e.V. is a youth-led, non-profit organization based in Germany working at the intersection of youth empowerment, mental health, embodiment and peace education.</p>
-
-<p>We create and experiential, inclusive learning spaces where young people and youth workers can reconnect: With themselves, with others, and with the wider social and natural surrounding they are part of.</p>
-
-<p>We work with the understanding that many young people today grow up in environments shaped by pressure to compete, acceleration and emotional disconnection In response, we see the importance of resilience for Youth in this fast changing world. .</p>
-
-<p>Our vision is to contribute to a more peaceful and compassionate Europe (and beyond) by integrating personal development with civic engagement, intercultural dialogue and social responsibility.
-We believe that transformation begins within the body - in presence, awareness and the ability to feel.</p>
-
-</div>
-</section>
-
-<!-- TEAM -->
-<section id="team" class="page">
-<div class="section">
-
-<h2>Our Team</h2>
-  
-<p>UNFOLD is carried by a small collective of educators, facilitators and practitioners with long-term experience in youth work, non-formal education and embodied learning.</p>
-
-</p>Our work is shaped by practice as much as by professional background in education and pedagogy, psychology, movement, environmental science and community work.</p>
-
-</p>What connects us is the shared intention: To create spaces where people can slow down, listen inwardly, and relate to each other in more honest and human ways. Together, they are part of an international network of youth workers and educators working across Europe in the field of non-formal education, peace-building and embodied learning.</p>
-
-<div class="member">
-<img src="images/Profilbild_Marie.jpg">
-<div>
-<h3>Marie Wächter</h3>
-<p>Marie Wächter, Chairwoman of Unfold e.V.,  works as a yoga teacher and body-oriented practitioner with a focus on mental health, self-regulation and somatic awareness. She is trauma-sensibly trained and integrates therapeutic, ecological and embodied approaches, linking human wellbeing with nature-based perspectives. </p>
-</div>
-</div>
-
-<div class="member">
-<img src="images/Profilbild_Marenka.jpg">
-<div>
-<h3>Marenka Sedlaczek</h3>
-<p>Marenka Sedlaczek, Vice-Chairwoman, works as a pedagogue, primary school teacher and theatre educator. She brings extensive international teaching experience with various background in pedagogy. Her group facilitation combines embodied, experiential and creative learning, with a focus on empowerment, authentic self-expression and relational awareness.</p>
-</div>
-</div>
-
-</div>
-</section>
-
-<!-- METHODOLOGY -->
-<section id="methodology" class="page">
-<div class="section">
-
-<h2>Our Methodology</h2>
-
-<p>Our methodology is rooted in the understanding that learning is not only cognitive, but deeply embodied, relational and experiential.<p>
-<p>We work through non-formal education methods that integrate movement, mindfulness, creative expression, dialogue and nature-based practices.<p>
-
-<p>In practice, this can include somatic awareness exercises, breath and movement work, guided reflection exercises, exploration of theatre-based methods and self-expression, group dialogue and connection to the natural surrounding.<p>
-
-<p>We place strong emphasis on emotional awareness, communication and relational safety - including practices of consent, boundary awareness and nonviolent communication.<p>
-
-<p>Rather than focusing on performance, self-improvement or outcomes, we support that young people can develop awareness of themselves and the process, authenticity from within and in response, new ways to build resilience for themselves.<p>
-
-<p>Our approach is trauma-sensitive and inclusive. It is designed to support both individual wellbeing and collective learning processes.<p>
-
-<p>We see education not only as the transmission of knowledge, but as the creation of conditions in which people can come into deeper contact with themselves, with others, and with the world..</p>
-
-</div>
 </section>
 
 <!-- CONTACT -->
 <section id="contact" class="page">
 <div class="section">
-
 <h2>Contact</h2>
 
-<form class="contact-form" id="form2">
+<form class="contact-form">
 <input name="name" placeholder="Name" required>
 <input type="email" name="email" placeholder="Email" required>
 <textarea name="message" rows="6" placeholder="Message" required></textarea>
