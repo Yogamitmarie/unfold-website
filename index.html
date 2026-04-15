@@ -16,12 +16,7 @@
   --white: #ffffff;
   --text: #2a2a2a;
   --soft: #d8d2c8;
-
-  --green: #a3b18a;
-  --apricot: #f2c6a0;
-
-  --md: 32px;
-  --xl: 120px;
+  --green: #7a8f6a;
 }
 
 /* 🌿 BASE */
@@ -31,11 +26,11 @@ body {
   background: var(--bg);
   color: var(--text);
 
-  /* 🌿 FARNE */
+  /* 🌿 GROSSES FARNELEMENT */
   background-image: url("images/fern-bg.png");
   background-repeat: no-repeat;
-  background-position: right bottom;
-  background-size: 45%;
+  background-position: right center;
+  background-size: 65%;
   opacity: 1;
 }
 
@@ -47,7 +42,7 @@ body {
   display: flex;
   justify-content: center;
   padding: 16px 24px;
-  background: rgba(248,246,241,0.85);
+  background: rgba(248,246,241,0.9);
   backdrop-filter: blur(10px);
   z-index: 100;
 }
@@ -60,7 +55,7 @@ body {
 
 .nav-right {
   position: absolute;
-  right: 60px;
+  right: 50px;
   display: flex;
   gap: 6px;
   background: rgba(255,255,255,0.6);
@@ -68,7 +63,6 @@ body {
   border-radius: 20px;
 }
 
-/* LINKS */
 .navbar a {
   text-decoration: none;
   color: var(--text);
@@ -76,29 +70,26 @@ body {
   letter-spacing: 0.1em;
   text-transform: uppercase;
   cursor: pointer;
-  transition: all 0.2s ease;
 }
 
 .navbar a:hover {
   color: var(--green);
-  transform: translateY(-2px);
 }
 
 /* 🌿 DROPDOWN FIX */
 .dropdown {
   position: relative;
-  padding-bottom: 10px; /* Hover-Brücke */
+  padding-bottom: 8px;
 }
 
 .dropdown-content {
   display: none;
   position: absolute;
-  top: 30px;
+  top: 28px;
   background: white;
   border-radius: 8px;
-  box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
   min-width: 180px;
-  padding: 8px 0;
 }
 
 .dropdown-content a {
@@ -110,12 +101,30 @@ body {
   display: block;
 }
 
+/* 🌿 PAGE */
+.page {
+  opacity: 0;
+  transform: translateY(30px);
+  pointer-events: none;
+  position: absolute;
+  width: 100%;
+  padding-top: 100px;
+  transition: all 0.8s ease;
+}
+
+.page.active {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+  position: relative;
+}
+
 /* 🌿 HERO */
 .hero {
   height: 85vh;
   display: flex;
   align-items: flex-start;
-  padding: var(--xl) var(--md);
+  padding: 120px 32px;
 }
 
 .hero h1 {
@@ -124,20 +133,21 @@ body {
   margin: 0;
 }
 
+/* e.V. angepasst */
 .hero .ev {
-  font-size: 32px;
-  letter-spacing: 0.25em;
+  font-family: 'Playfair Display', serif;
+  font-size: 34px;
   color: var(--green);
+  letter-spacing: 0.05em;
 }
 
 .hero p {
   margin-top: 16px;
-  color: #555;
 }
 
 /* 🌿 SECTION */
 .section {
-  padding: var(--xl) var(--md);
+  padding: 120px 32px;
   max-width: 800px;
   line-height: 1.7;
 }
@@ -165,6 +175,20 @@ body {
   border-radius: 6px;
 }
 
+/* 🌿 CONTACT */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 400px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
 /* 🌿 FOOTER */
 .footer {
   padding: 60px 32px;
@@ -178,47 +202,15 @@ body {
   margin-left: 12px;
 }
 
-/* 🌿 PAGES */
-.page {
-  opacity: 0;
-  transform: translateY(30px);
-  pointer-events: none;
-  position: absolute;
-  width: 100%;
-  padding-top: 100px;
-  transition: all 0.8s ease;
-}
-
-.page.active {
-  opacity: 1;
-  transform: translateY(0);
-  pointer-events: auto;
-  position: relative;
-}
-
-/* 🌿 MOBILE */
-@media (max-width: 768px) {
-  .hero h1 {
-    font-size: 2.5em;
-  }
-
-  .nav-right {
-    right: 20px;
-  }
-
-  .member {
-    flex-direction: column;
-  }
-}
-
 </style>
 </head>
 
 <body>
 
+<!-- NAV -->
 <div class="navbar">
-  <div class="nav-left">
 
+  <div class="nav-left">
     <a onclick="showPage('home')">Home</a>
 
     <div class="dropdown">
@@ -230,23 +222,30 @@ body {
       </div>
     </div>
 
-    <a onclick="showPage('contact')">Contact</a>
+    <div class="dropdown">
+      <a>Programs</a>
+      <div class="dropdown-content">
+        <a>Local Programs</a>
+        <a>International Programs</a>
+      </div>
+    </div>
 
+    <a onclick="showPage('contact')">Contact</a>
   </div>
 
   <div class="nav-right">
     <a href="#">ENG</a>
     <a href="#">DE</a>
   </div>
+
 </div>
 
 <!-- HOME -->
 <section id="home" class="page active">
   <section class="hero">
     <div>
-      <h1>UNFOLD</h1>
-      <div class="ev">e.V.</div>
-      <p>Embodied Learning Across Europe</p>
+      <h1>UNFOLD <span class="ev">e.V.</span></h1>
+      <p>Embodied Learning Across Europe.</p>
     </div>
   </section>
 </section>
@@ -254,41 +253,86 @@ body {
 <!-- VISION -->
 <section id="vision" class="page">
   <div class="section">
-    <h2>Our Vision</h2>
-    <p>UNFOLD e.V. is a youth-led, non-profit organization...</p>
-  </div>
+
+<h2>Our Vision</h2>
+
+<p>UNFOLD e.V. is a youth-led, non-profit organization based in Germany working at the intersection of youth empowerment, mental health, embodiment and peace education.</p>
+
+<p>We create safe, inclusive and experiential learning spaces where young people and youth workers can reconnect: with themselves, with others, and with the wider social and natural surrounding they are part of.</p>
+
+<p>We work with the understanding that many young people today grow up in environments shaped by pressure to compete, acceleration and emotional disconnection.</p>
+
+<p>Our vision is to contribute to a more peaceful and compassionate Europe by integrating personal development with civic engagement, intercultural dialogue and social responsibility.</p>
+
+</div>
 </section>
 
 <!-- TEAM -->
 <section id="team" class="page">
   <div class="section">
-    <h2>Our Team</h2>
 
-    <div class="team">
-      <div class="member">
-        <img src="images/Profilbild_Marie.jpg">
-        <div>
-          <h3>Marie Wächter</h3>
-        </div>
-      </div>
-    </div>
+<h2>Our Team</h2>
 
-  </div>
+<div class="team">
+
+<div class="member">
+<img src="images/Profilbild_Marie.jpg">
+<div>
+<h3>Marie Wächter</h3>
+<p>Chairwoman of UNFOLD e.V., works as a yoga teacher and body-oriented practitioner with a focus on mental health, self-regulation and somatic awareness.</p>
+</div>
+</div>
+
+<div class="member">
+<img src="images/Profilbild_Marenka.jpg">
+<div>
+<h3>Marenka Sedlaczcek</h3>
+<p>Vice-Chairwoman, works as a pedagogue, primary school teacher and theatre educator with focus on empowerment and expression.</p>
+</div>
+</div>
+
+</div>
+
+</div>
+</section>
+
+<!-- METHODOLOGY -->
+<section id="methodology" class="page">
+  <div class="section">
+
+<h2>Our Methodology</h2>
+
+<p>Our methodology is rooted in embodied, relational and experiential learning.</p>
+
+<p>We integrate movement, mindfulness, creative expression, dialogue and nature-based practices.</p>
+
+<p>Rather than focusing on performance, we support authenticity and resilience.</p>
+
+</div>
 </section>
 
 <!-- CONTACT -->
 <section id="contact" class="page">
   <div class="section">
-    <h2>Contact</h2>
-    <p>Email: unfold.erasmus@gmail.com</p>
-  </div>
+
+<h2>Contact</h2>
+
+<form class="contact-form" action="https://formspree.io/f/YOUR-ID" method="POST">
+<input type="text" name="name" placeholder="Name">
+<input type="email" name="email" placeholder="Email">
+<textarea name="message" placeholder="Message"></textarea>
+<button type="submit">Send</button>
+</form>
+
+</div>
 </section>
 
+<!-- FOOTER -->
 <div class="footer">
   <div>UNFOLD e.V.</div>
   <div>
-    <a href="#">Instagram</a>
-    <a href="#">Email</a>
+    <a href="https://instagram.com/unfold.ev">Instagram</a>
+    <a href="mailto:unfold.erasmus@gmail.com">Email</a>
   </div>
 </div>
 
