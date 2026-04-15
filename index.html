@@ -28,6 +28,7 @@ body {
 /* NAV */
 .navbar{
   position: fixed;
+  top: 0;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -51,6 +52,13 @@ body {
   text-decoration: none;
   color: var(--text);
   cursor: pointer;
+  transition: 0.2s ease;
+}
+
+/* HOVER EFFECT */
+.navbar a:hover,
+.dropbtn:hover {
+  color: rgba(42, 42, 42, 0.55);
 }
 
 /* DROPBTN */
@@ -61,6 +69,7 @@ body {
   color: var(--text);
   cursor: pointer;
   padding: 0;
+  transition: 0.2s ease;
 }
 
 /* DROPDOWN */
@@ -83,7 +92,8 @@ body {
   pointer-events: none;
 }
 
-.dropdown:hover .dropdown-content {
+/* OPEN STATE (CLICK) */
+.dropdown.open .dropdown-content {
   opacity: 1;
   visibility: visible;
   transform: translateY(0);
@@ -129,7 +139,7 @@ body {
   color: var(--green);
 }
 
-/* 🌿 FARN FIX */
+/* FERN */
 .hero::after {
   content: "";
   position: absolute;
@@ -149,10 +159,9 @@ body {
   max-width: 900px;
   padding: 100px 40px;
   line-height: 1.8;
-  position: relative; /* 🔥 FIX für Farn */
+  position: relative;
 }
 
-/* 🌿 FARN SECTION */
 .section::after {
   content: "";
   position: absolute;
@@ -209,7 +218,7 @@ button {
   cursor: pointer;
 }
 
-/* HOME CONTACT SECTION */
+/* HOME CONTACT */
 .home-contact-title {
   font-family: 'Playfair Display';
   font-size: 3em;
@@ -304,7 +313,6 @@ button {
     <div class="ev">e.V.</div>
     <p>Embodied Learning Across Europe.</p>
 
-    <!-- HOME CONTACT (NOW HERE, VERY LOW) -->
     <h2 class="home-contact-title">Let’s get in touch</h2>
 
     <form class="contact-form">
@@ -320,37 +328,23 @@ button {
 <!-- VISION -->
 <section id="vision" class="page">
 <div class="section">
-
 <h2>Our Vision</h2>
-
 <p>UNFOLD e.V. is a youth-led, non-profit organization based in Germany working at the intersection of youth empowerment, mental health, embodiment and peace education.</p>
-
-<p>We create safe, inclusive and experiential learning spaces where young people and youth workers can reconnect: With themselves, with others, and with the wider social and natural surrounding they are part of.</p>
-
-<p>We work with the understanding that many young people today grow up in environments shaped by pressure to compete, acceleration and emotional disconnection. 
-In response, we see the importance of resilience for Youth in this fast changing world.</p>
-
-<p>Our vision is to contribute to a more peaceful and compassionate Europe (and beyond) by integrating personal development with civic engagement, intercultural dialogue and social responsibility.
-We believe that transformation begins in the body - in presence, awareness and the ability to feel.</p>
-
+<p>We create safe, inclusive and experiential learning spaces where young people and youth workers can reconnect.</p>
+<p>We believe transformation begins in the body - in presence, awareness and the ability to feel.</p>
 </div>
 </section>
 
 <!-- TEAM -->
 <section id="team" class="page">
 <div class="section">
-
 <h2>Our Team</h2>
-
-<p>UNFOLD is carried by a small collective of educators, facilitators and practitioners with long-term experience in youth work, non-formal education and embodied learning.</p>
-
-<p>What connects us is the shared intention: To create spaces where people can slow down, listen inwardly, and relate to each other in more honest and human ways.</p>
 
 <div class="member">
 <img src="images/Profilbild_Marie.jpg">
 <div>
 <h3>Marie Wächter</h3>
-<p>Chairwoman of UNFOLD e.V., works as a yoga teacher and body-oriented practitioner with a focus on mental health.</p>
+<p>Chairwoman of UNFOLD e.V.</p>
 </div>
 </div>
 
@@ -358,7 +352,7 @@ We believe that transformation begins in the body - in presence, awareness and t
 <img src="images/Profilbild_Marenka.jpg">
 <div>
 <h3>Marenka Sedlaczek</h3>
-<p>Vice-Chairwoman, works as a pedagogue, primary school teacher and theatre educator.</p>
+<p>Vice-Chairwoman of UNFOLD e.V.</p>
 </div>
 </div>
 
@@ -368,22 +362,14 @@ We believe that transformation begins in the body - in presence, awareness and t
 <!-- METHODOLOGY -->
 <section id="methodology" class="page">
 <div class="section">
-
 <h2>Our Methodology</h2>
-
-<p>Our methodology is rooted in embodied, relational and experiential learning.</p>
-
-<p>We work through non-formal education methods that integrate movement, mindfulness, creative expression and dialogue.</p>
-
-<p>Our approach is trauma-sensitive and inclusive.</p>
-
+<p>Embodied, relational and experiential learning through movement, mindfulness and dialogue.</p>
 </div>
 </section>
 
-<!-- CONTACT PAGE (UNCHANGED) -->
+<!-- CONTACT -->
 <section id="contact" class="page">
 <div class="section">
-
 <h2>Contact</h2>
 
 <form class="contact-form">
@@ -405,10 +391,30 @@ We believe that transformation begins in the body - in presence, awareness and t
 
 <script>
 
+/* PAGE SWITCH */
 function showPage(id){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   document.getElementById(id).classList.add('active');
 }
+
+/* DROPDOWN CLICK */
+document.querySelectorAll(".dropdown").forEach(drop => {
+  const btn = drop.querySelector(".dropbtn");
+
+  btn.addEventListener("click", (e) => {
+    e.stopPropagation();
+
+    document.querySelectorAll(".dropdown").forEach(d => {
+      if (d !== drop) d.classList.remove("open");
+    });
+
+    drop.classList.toggle("open");
+  });
+});
+
+document.addEventListener("click", () => {
+  document.querySelectorAll(".dropdown").forEach(d => d.classList.remove("open"));
+});
 
 /* FORM */
 document.querySelectorAll("form").forEach(form=>{
