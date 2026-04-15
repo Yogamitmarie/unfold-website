@@ -14,7 +14,7 @@
 :root {
   --bg: #faf8f3;
   --text: #2a2a2a;
-  --green: #3f5a3a;
+  --green: #7a8f7a; /* 🌿 Salbeigrün */
 }
 
 /* BASE */
@@ -51,23 +51,6 @@ body {
   text-decoration: none;
   color: var(--text);
   cursor: pointer;
-  position: relative;
-}
-
-/* Hover underline */
-.navbar a::after {
-  content:"";
-  position:absolute;
-  width:0;
-  height:1px;
-  bottom:-4px;
-  left:0;
-  background: var(--green);
-  transition:0.3s;
-}
-
-.navbar a:hover::after {
-  width:100%;
 }
 
 /* DROPDOWN */
@@ -79,7 +62,6 @@ body {
   top: 25px;
   background: white;
   border-radius: 8px;
-  padding: 5px 0;
 }
 
 .dropdown:hover .dropdown-content {
@@ -88,7 +70,7 @@ body {
 
 .dropdown-content a {
   display: block;
-  padding: 10px 16px;
+  padding: 10px;
 }
 
 /* PAGE */
@@ -123,19 +105,33 @@ body {
 .hero::after {
   content: "";
   position: absolute;
-  right: 10%;
+  right: 8%;
   top: 10%;
-  width: 400px;
-  height: 400px;
+  width: 420px;
+  height: 420px;
   background: url("images/fern-bg.png") no-repeat center/contain;
-  opacity: 0.2;
+  opacity: 0.25;
+  z-index: -1;
 }
 
 /* SECTION */
 .section {
   max-width: 900px;
   padding: 100px 40px;
-  line-height: 1.7;
+  line-height: 1.8;
+}
+
+/* 🌿 FARN BACKGROUND SECTIONS */
+.section::after {
+  content: "";
+  position: absolute;
+  right: 5%;
+  top: 20%;
+  width: 400px;
+  height: 400px;
+  background: url("images/fern-bg.png") no-repeat center/contain;
+  opacity: 0.08;
+  z-index: -1;
 }
 
 h2 {
@@ -168,7 +164,6 @@ h2 {
   padding: 16px;
   font-size: 16px;
   border: 1px solid #ddd;
-  border-radius: 6px;
 }
 
 button {
@@ -178,11 +173,6 @@ button {
   border-radius: 30px;
   border: none;
   cursor: pointer;
-  transition: 0.25s;
-}
-
-button:hover {
-  transform: translateY(-3px);
 }
 
 /* SUCCESS */
@@ -195,31 +185,20 @@ button:hover {
   opacity: 1;
 }
 
-/* CTA */
-.cta {
-  margin-top: 140px;
-}
-
-.cta h2 {
-  font-family: 'Playfair Display';
-  font-size: 2.4em;
-}
-
-/* FOOTER */
+/* FOOTER FIXED RIGHT */
 .footer {
-  padding: 60px 40px;
-  display: flex;
-  justify-content: space-between;
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
 }
 
 .footer a {
-  color: var(--green);
   margin-left: 15px;
+  color: var(--green);
 }
 
 /* MOBILE */
 @media(max-width:768px){
-
   .nav-left {
     flex-wrap: wrap;
     justify-content: center;
@@ -240,7 +219,6 @@ button:hover {
   .member {
     flex-direction: column;
   }
-
 }
 
 </style>
@@ -282,24 +260,76 @@ button:hover {
     <h1>UNFOLD</h1>
     <div class="ev">e.V.</div>
     <p>Embodied Learning Across Europe.</p>
-
-    <div class="cta">
-      <h2>Let’s get in Touch</h2>
-
-      <form class="contact-form">
-        <input name="name" placeholder="Name" required>
-        <input type="email" name="email" placeholder="Email" required>
-        <textarea name="message" rows="6" placeholder="Message" required></textarea>
-        <button type="submit">Send Message</button>
-        <div class="success">Thank you for your message. We will get back to you.</div>
-      </form>
-    </div>
   </div>
+</section>
+
+<!-- VISION -->
+<section id="vision" class="page">
+<div class="section">
+
+<h2>Our Vision</h2>
+
+<p>UNFOLD e.V. is a youth-led, non-profit organization based in Germany working at the intersection of youth empowerment, mental health, embodiment and peace education.</p>
+
+<p>We create safe, inclusive and experiential learning spaces where young people and youth workers can reconnect: With themselves, with others, and with the wider social and natural surrounding they are part of.</p>
+
+<p>We work with the understanding that many young people today grow up in environments shaped by pressure to compete, acceleration and emotional disconnection. 
+In response, we see the importance of resilience for Youth in this fast changing world.</p>
+
+<p>Our vision is to contribute to a more peaceful and compassionate Europe (and beyond) by integrating personal development with civic engagement, intercultural dialogue and social responsibility.
+We believe that transformation begins in the body - in presence, awareness and the ability to feel.</p>
+
+</div>
+</section>
+
+<!-- TEAM -->
+<section id="team" class="page">
+<div class="section">
+
+<h2>Our Team</h2>
+
+<p>UNFOLD is carried by a small collective of educators, facilitators and practitioners with long-term experience in youth work, non-formal education and embodied learning.</p>
+
+<p>What connects us is the shared intention: To create spaces where people can slow down, listen inwardly, and relate to each other in more honest and human ways.</p>
+
+<div class="member">
+<img src="images/Profilbild_Marie.jpg">
+<div>
+<h3>Marie Wächter</h3>
+<p>Chairwoman of UNFOLD e.V., works as a yoga teacher and body-oriented practitioner with a focus on mental health.</p>
+</div>
+</div>
+
+<div class="member">
+<img src="images/Profilbild_Marenka.jpg">
+<div>
+<h3>Marenka Sedlaczek</h3>
+<p>Vice-Chairwoman, works as a pedagogue, primary school teacher and theatre educator.</p>
+</div>
+</div>
+
+</div>
+</section>
+
+<!-- METHODOLOGY -->
+<section id="methodology" class="page">
+<div class="section">
+
+<h2>Our Methodology</h2>
+
+<p>Our methodology is rooted in embodied, relational and experiential learning.</p>
+
+<p>We work through non-formal education methods that integrate movement, mindfulness, creative expression and dialogue.</p>
+
+<p>Our approach is trauma-sensitive and inclusive.</p>
+
+</div>
 </section>
 
 <!-- CONTACT -->
 <section id="contact" class="page">
 <div class="section">
+
 <h2>Contact</h2>
 
 <form class="contact-form">
@@ -313,12 +343,10 @@ button:hover {
 </div>
 </section>
 
+<!-- FOOTER -->
 <div class="footer">
-  <div>UNFOLD e.V.</div>
-  <div>
-    <a href="https://instagram.com/unfold.ev">Instagram</a>
-    <a href="mailto:unfold.erasmus@gmail.com">Email</a>
-  </div>
+  <a href="https://instagram.com/unfold.ev">Instagram</a>
+  <a href="mailto:unfold.erasmus@gmail.com">Email</a>
 </div>
 
 <script>
