@@ -105,13 +105,18 @@ body {
 .hero::after {
   content: "";
   position: absolute;
-  right: 8%;
-  top: 10%;
-  width: 420px;
-  height: 420px;
+  right: -60px;
+  top: 0;
+  width: 500px;
+  height: 500px;
   background: url("images/fern-bg.png") no-repeat center/contain;
-  opacity: 0.25;
+
+  opacity: 0.08;
+  filter: sepia(1) hue-rotate(70deg) saturate(0.6) brightness(0.9) blur(1px);
+  transform: rotate(8deg);
+
   z-index: -1;
+  pointer-events: none;
 }
 
 /* SECTION */
@@ -125,13 +130,18 @@ body {
 .section::after {
   content: "";
   position: absolute;
-  right: 5%;
-  top: 20%;
-  width: 400px;
-  height: 400px;
+  right: -40px;
+  top: 30%;
+  width: 420px;
+  height: 420px;
   background: url("images/fern-bg.png") no-repeat center/contain;
-  opacity: 0.08;
+
+  opacity: 0.04;
+  filter: sepia(1) hue-rotate(70deg) saturate(0.5) brightness(0.95) blur(1.5px);
+  transform: rotate(-6deg);
+
   z-index: -1;
+  pointer-events: none;
 }
 
 h2 {
